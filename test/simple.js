@@ -23,10 +23,10 @@ exports['use is a function'] = function(test) {
 }
 
 exports['register and call a middleware'] = function(test) {
-    var a = 0;    function setA(req, res, next) {        a = 1;        next();    };
+    var a = 0;    function setA(req, res, next) {        a = 1;    };
     var app = simpleweb();
     app.use(setA);    app();    test.ok(a, 1);
     test.done();
-}exports['register and call two middlewares'] = function(test) {    var a = 0;    function set1(req, res, next) {        a = 1;        next();    };    function set2(req, res, next) {        a *= 2;        next();    };    var app = simpleweb();
+}exports['register and call two middlewares'] = function(test) {    var a = 0;    function set1(req, res, next) {        a = 1;        next();    };    function set2(req, res, next) {        a *= 2;    };    var app = simpleweb();
     app.use(set1);    app.use(set2);    app();    test.ok(a, 2);
     test.done();}
