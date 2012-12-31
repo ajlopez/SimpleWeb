@@ -63,9 +63,9 @@ function doFooter(res)
 function doHome(req, res)
 {
     doHeader(res, 'Home');
-    res.write('<div>Simple CRUD sample, in-memory model.</div>');
-    res.write('<div>Using Query String (no parameters in URL, or post processing, yet).</div>');
-    res.write('<div>No static files.</div>');
+    res.write('<div>Dynamic sample, customers in-memory model.</div>');
+    res.write('<div>Using query string parsing, and body parsing in posts.</div>');
+    res.write('<div>Static files.</div>');
     doFooter(res);
     res.end();
 }
