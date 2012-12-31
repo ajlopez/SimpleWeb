@@ -1,24 +1,9 @@
 
 var simpleweb = require('../..'),
     path = require('path'),
-    http = require('http');
+    http = require('http'),
+    repository = require('./model/repository');
     
-var customers = [
-    { id: 1, name: 'Apple' },
-    { id: 2, name: 'Google' },
-    { id: 3, name: 'Microsoft' }
-];
-
-var maxid = 3;
-
-function getCustomerById(id) {
-    for (var n in customers) {
-        var customer = customers[n];
-        if (customer.id === id)
-            return customer;
-    }
-}
-
 function doHeader(res, title)
 {
     res.writeHead(200, {'content-type': 'text/html'});
@@ -81,7 +66,7 @@ function doTBD(res)
 function doCustomerView(req, res)
 {
     var id = parseInt(req.query.id);
-    var customer = getCustomerById(id);
+    var customer = repository.getById(id);
     doHeader(res, 'Customer');
     res.write('<div class="btn-group actions">\n');
     res.write('<a class="btn btn-info" href="/customer">Customers</a>\n');
@@ -105,6 +90,8 @@ function doCustomerList(req, res)
     
     res.write('<table class="table-striped table-bordered list">\n');
     res.write('<tr><th>Id</th><th>Name</th></tr>\n');
+
+    var customers = repository.getList();
     
     customers.forEach(function(customer) {
         res.write('<tr>\n');
@@ -139,9 +126,8 @@ function doCustomerNew(req, res)
 
 function doCustomerNewProcess(req, res)
 {
-    maxid++;
-    var customer = { id: maxid, name:  req.body.name };
-    customers.push(customer);
+    var customer = { name:  req.body.name };
+    repository.add(customer);
     res.writeHead(302, { 'Location': '/customer' });
     res.end();
 }
