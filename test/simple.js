@@ -1,0 +1,1 @@
+var simpleweb = require('..'),    assert = require('assert');assert.ok(simpleweb);assert.equal(typeof simpleweb, 'function');

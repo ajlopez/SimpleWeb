@@ -1,0 +1,16 @@
+{ "name": "simpleweb"
+, "description": "Simple Web Application using middleware"
+, "keywords": [ "http", "web", "application", "middleware" ]
+, "version": "0.0.1alpha"
+, "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)"
+, "repository": { "type": "git", "url": "git://github.com/ajlopez/SimpleWeb.git" }
+, "main": "./lib/simpleweb.js"
+, "engines": { "node": ">= 0.6.0 && < 0.9.0" }
+, "scripts": {
+    "test": "node ./test.js"
+  }
+, "dependencies": {
+  }
+, "devDependencies": {
+  }
+}
