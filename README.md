@@ -15,6 +15,34 @@ Reference in your program:
 ```js
 var simpleweb = require('simpleweb');
 ```
+
+A simple web server:
+```js
+var simpleweb = require('simpleweb'),
+    http = require('http');
+
+var app = simpleweb();
+
+// Configuring middleware
+
+app.use(simpleweb.query());
+app.use(simpleweb.body());
+app.use(app.router);
+app.use(simpleweb.static(path.join(__dirname, 'public')));
+
+// Configuring routes
+
+app.get('/', function (req, res) { /* .... */ });
+app.get('/customer', function (req, res) { /* .... */ });
+app.get('/customer/new', function (req, res) { /* .... */ });
+app.post('/customer/new', function (req, res) { /* .... */ });
+app.get('/supplier', function (req, res) { /* .... */ });
+
+// Launch the web server
+
+var server = http.createServer(app).listen(8000);
+```
+
 TBD
 
 ## Development
@@ -28,11 +56,9 @@ npm test
 
 ## Samples
 
-TBD
+[Static](https://github.com/ajlopez/SimpleWeb/tree/master/samples/static) Simple site with static pages.
 
-## To do
-
-TBD
+[Customers](https://github.com/ajlopez/SimpleWeb/tree/master/samples/customers) Dinamic pages, in-memory repository.
 
 ## Contribution
 
