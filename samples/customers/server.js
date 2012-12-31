@@ -48,16 +48,6 @@ function doFooter(res)
     res.write('</html>');
 }
 
-function doHome(req, res)
-{
-    doHeader(res, 'Home');
-    res.write('<div>Dynamic sample, customers in-memory model.</div>');
-    res.write('<div>Using query string parsing, and body parsing in posts.</div>');
-    res.write('<div>Static files.</div>');
-    doFooter(res);
-    res.end();
-}
-
 function doTBD(res)
 {
     res.write('<div>[TBD]</div>\n');
@@ -138,8 +128,8 @@ app.use(simpleweb.query());
 app.use(simpleweb.post());
 app.use(app.router);
 app.use(simpleweb.static(path.join(__dirname, 'public')));
-app.get('/', doHome);
-app.get('/customer', doCustomerList);
+app.get('/', require('./pages/home'));
+app.get('/customer', require('./pages/customerList'));
 app.get('/customer/new', doCustomerNew);
 app.get('/customer/view', doCustomerView);
 app.get('/customer/newprocess', doCustomerNewProcess);
