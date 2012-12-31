@@ -71,7 +71,7 @@ app.get('/', require('./pages/home'));
 app.get('/customer', require('./pages/customerList'));
 app.get('/customer/new', require('./pages/customerNew'));
 app.get('/customer/view', require('./pages/customerView'));
-app.get('/customer/newprocess', doCustomerNewProcess);
+app.post('/customer/new', doCustomerNewProcess);
 
 var server = http.createServer(app).listen(8000);
 

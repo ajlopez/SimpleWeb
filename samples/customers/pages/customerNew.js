@@ -8,7 +8,7 @@ exports = module.exports = function (req, res) {
 
 function doBody(req, res)
 {
-    res.write('<form action="/customer/newprocess" method="post">\n');
+    res.write('<form action="/customer/new" method="post">\n');
     res.write('<fieldset>\n');
     res.write('<legend>Name</legend>\n');
     res.write('<div><input name="name"></div>\n');
