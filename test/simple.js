@@ -17,5 +17,5 @@ assert.equal(app.length, 2);
 assert.ok(app.use);
 assert.equal(typeof app.use, 'function');
 
-// register and call middlewarevar a = 0;function setA(req, res, next) {    a = 1;    if (next)        next();};
-app.use(setA);app();assert.ok(a, 1);// register and call two middlewaresvar a = 0;function set1(req, res, next) {    a = 1;    if (next)        next();};function set2(req, res, next) {    a *= 2;    if (next)        next();};app.use(set1);app.use(set2);app();assert.ok(a, 2);
+// register and call middlewarevar a = 0;function setA(req, res, next) {    a = 1;    next();};
+app.use(setA);app();assert.ok(a, 1);// register and call two middlewaresvar a = 0;function set1(req, res, next) {    a = 1;    next();};function set2(req, res, next) {    a *= 2;    next();};app.use(set1);app.use(set2);app();assert.ok(a, 2);
