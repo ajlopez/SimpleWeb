@@ -53,67 +53,6 @@ function doTBD(res)
     res.write('<div>[TBD]</div>\n');
 }
 
-function doCustomerView(req, res)
-{
-    var id = parseInt(req.query.id);
-    var customer = repository.getById(id);
-    doHeader(res, 'Customer');
-    res.write('<div class="btn-group actions">\n');
-    res.write('<a class="btn btn-info" href="/customer">Customers</a>\n');
-    res.write('<a class="btn btn-primary" href="/customer/update?id=' + id + '">Update</a>\n');
-    res.write('<a class="btn btn-danger" href="/customer/delete?id=' + id + '">Delete</a>\n');
-    res.write('</div>\n');
-    res.write('<table class="table-striped table-bordered view">\n');
-    res.write('<tr><td>Id</td><td>' + id + '</td></tr>\n');
-    res.write('<tr><td>Name</td><td>' + customer.name + '</td></tr>\n');
-    res.write('</table>\n');
-    doFooter(res);
-    res.end();
-}
-
-function doCustomerList(req, res)
-{
-    doHeader(res, 'Customers');
-    res.write('<div class="btn-group actions">\
-<a class="btn btn-primary" href="/customer/new">New Customer</a>\
-</div>');
-    
-    res.write('<table class="table-striped table-bordered list">\n');
-    res.write('<tr><th>Id</th><th>Name</th></tr>\n');
-
-    var customers = repository.getList();
-    
-    customers.forEach(function(customer) {
-        res.write('<tr>\n');
-        res.write('<td><a href="/customer/view?id=' + customer.id + '">' + customer.id + '</a></td>\n');
-        res.write('<td>' + customer.name + '</td>\n');
-        res.write('</tr>\n');
-    });
-    
-    res.write('</table>\n');
-    
-    doFooter(res);
-    res.end();
-}
-
-function doCustomerNew(req, res)
-{
-    doHeader(res, 'New Customer');
-    
-    res.write('<form action="/customer/newprocess" method="post">\n');
-    res.write('<fieldset>\n');
-    res.write('<legend>Name</legend>\n');
-    res.write('<div><input name="name"></div>\n');
-    
-    res.write('</fieldset>\n');
-
-    res.write('<input type="submit" value="Submit"/>\n');
-    res.write('</form>\n');
-    
-    doFooter(res);
-    res.end();
-}
-
 function doCustomerNewProcess(req, res)
 {
     var customer = { name:  req.body.name };
@@ -130,8 +69,8 @@ app.use(app.router);
 app.use(simpleweb.static(path.join(__dirname, 'public')));
 app.get('/', require('./pages/home'));
 app.get('/customer', require('./pages/customerList'));
-app.get('/customer/new', doCustomerNew);
-app.get('/customer/view', doCustomerView);
+app.get('/customer/new', require('./pages/customerNew'));
+app.get('/customer/view', require('./pages/customerView'));
 app.get('/customer/newprocess', doCustomerNewProcess);
 
 var server = http.createServer(app).listen(8000);

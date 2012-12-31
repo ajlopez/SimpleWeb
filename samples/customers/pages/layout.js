@@ -44,12 +44,13 @@ function doHeader(res, model)
         
     res.write('<h1>');
     res.write(title);
-    res.write('</h1>');
+    res.write('</h1>\n');
 }
 
 function doFooter(res)
 {
-    res.write('</div>');
-    res.write('</body>');
-    res.write('</html>');
+    res.write('</div>\n');
+    res.write('<div class="footer">Powered by <a href="https://github.com/ajlopez/SimpleWeb">SimpleWeb</a>\n');
+    res.write('</body>\n');
+    res.write('</html>\n');
 }
