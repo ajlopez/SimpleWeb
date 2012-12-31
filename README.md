@@ -1,6 +1,6 @@
 # SimpleWeb
 
-Simple Web Application using middleware, inspired by Connect and others. Work in Progress.
+Simple middleware layer for web applications, inspired by Connect and others. Work in Progress.
 
 ## Installation
 

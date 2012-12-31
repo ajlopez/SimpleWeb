@@ -1,5 +1,5 @@
 { "name": "simpleweb"
-, "description": "Simple Web Application using middleware"
+, "description": "Simple middleware layer for web applications, inspired by Connect and others. Work in Progress."
 , "keywords": [ "http", "web", "application", "middleware" ]
 , "version": "0.0.1alpha"
 , "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)"
