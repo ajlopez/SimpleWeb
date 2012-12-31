@@ -113,6 +113,7 @@ var app = simpleweb();
 
 app.use(simpleweb.query());
 app.use(simpleweb.post());
+app.use(app.router);
 app.use(simpleweb.static(path.join(__dirname, 'public')));
 app.get('/', doHome);
 app.get('/customer', doCustomerList);
