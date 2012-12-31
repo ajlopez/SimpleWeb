@@ -64,7 +64,7 @@ function doCustomerNewProcess(req, res)
 var app = simpleweb();
 
 app.use(simpleweb.query());
-app.use(simpleweb.post());
+app.use(simpleweb.body());
 app.use(app.router);
 app.use(simpleweb.static(path.join(__dirname, 'public')));
 app.get('/', require('./pages/home'));
