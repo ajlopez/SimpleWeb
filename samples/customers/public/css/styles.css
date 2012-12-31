@@ -11,6 +11,10 @@
     min-width: 500px;
 }
 
+.content {
+    margin: 10px;
+}
+
 .actions {
     margin-bottom: 20px;
 }

@@ -23,7 +23,7 @@ function doHeader(res, title)
 {
     res.writeHead(200, {'content-type': 'text/html'});
     res.write('<html><head><title>');
-    res.write('CRUD Simple Sample: ' + title);
+    res.write('Simple Dynamic Sample: ' + title);
     res.write('</title>');
     res.write('<link rel="stylesheet" href="/css/bootstrap.css">');
     res.write('<link rel="stylesheet" href="/css/styles.css">');
@@ -48,6 +48,8 @@ function doHeader(res, title)
     res.write('</div>\n');
     res.write('</div>\n');
     res.write('</div>\n');
+
+    res.write('<div class="content">\n');
         
     res.write('<h1>');
     res.write(title);
@@ -56,6 +58,7 @@ function doHeader(res, title)
 
 function doFooter(res)
 {
+    res.write('</div>');
     res.write('</body>');
     res.write('</html>');
 }
