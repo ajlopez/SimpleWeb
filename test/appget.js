@@ -13,6 +13,7 @@ exports['router is an application function'] = function(test) {
 }
 
 exports['register and call get'] = function(test) {
+    test.async();
     var app = simpleweb();
     app.use(app.router);
     app.get('/', function(req, res) {

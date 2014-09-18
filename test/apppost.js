@@ -6,6 +6,7 @@ var simpleweb = require('..');
     test.equal(typeof app.post, 'function');    test.done();}
 
 exports['register and call post'] = function(test) {
+    test.async();
     var app = simpleweb();
     app.use(app.router);
     app.post('/', function(req, res) {
